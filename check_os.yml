@@ -1,0 +1,21 @@
+- hosts: all
+  become: true
+  gather_facts: yes
+  tasks:
+
+  - name: display operating system
+    set_fact:
+      operating_system: "{{ ansible_os_family }}"
+      ansible_hostname: "{{ ansible_hostname }}"
+      ansible_distribution: "{{ ansible_distribution }}"
+  - name: print ansible_distribution
+    debug:
+      msg: "ansible distribution is {{ ansible_distribution }}"
+
+  - name: print operating system
+    debug:
+     msg: "Operating system is {{ operating_system }}"
+
+  - name: print ansible_hostname
+    debug:
+      msg: "ansible hostname is {{ ansible_hostname }}"
